@@ -1,0 +1,47 @@
+def calcular_estadisticas(numeros):
+    """
+    Calcula la suma, el promedio, el máximo y el mínimo de una lista de números.
+
+    Args:
+        numeros (list): Lista de números.
+
+    Returns:
+        dict: Diccionario con los resultados de las estadísticas.
+    """
+    suma = sum(numeros)
+    promedio = suma / len(numeros)
+    maximo = max(numeros)
+    minimo = min(numeros)
+
+    return {"suma": suma, "promedio": promedio, "maximo": maximo, "minimo": minimo}
+
+def main():
+    """
+    Función principal que solicita la entrada del usuario, valida los datos y calcula las estadísticas.
+    """
+    try:
+        # Solicitar entrada al usuario
+        entrada = input("Ingresa una lista de números separados por comas: ")
+
+        # Convertir la entrada en una lista de números
+        numeros = [float(x.strip()) for x in entrada.split(",")]
+
+        # Validar que la lista no esté vacía
+        if not numeros:
+            raise ValueError("La lista no puede estar vacía.")
+
+        # Calcular las estadísticas usando la función
+        resultados = calcular_estadisticas(numeros)
+
+        # Mostrar el resultado
+        print("Resultados:", resultados)
+
+    except ValueError as e:
+        # Manejar errores de conversión o entrada inválida
+        print("Error:", e)
+    except Exception as e:
+        # Manejar cualquier otro tipo de error
+        print("Ha ocurrido un error inesperado:", e)
+
+if __name__ == "__main__":
+    main()
